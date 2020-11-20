@@ -4,9 +4,10 @@ const connection = require('./database/conections')
 const routes = express.Router();
 
 
-routes.get('/users', (req,res) =>{
+routes.get('/users', async(req,res) =>{
 
-    const users = connection('users').select('*');
+    const users = await connection('users').select('*');
+    console.log(users)
     res.json(users);
 })
 
